@@ -916,7 +916,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1.25rem clamp(1.5rem, 4vw, 3rem);
+    gap: 1.5rem clamp(2rem, 5vw, 4rem);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -924,16 +924,28 @@
 
   .wordmark {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    height: var(--logo-h, 3rem);
     line-height: 1;
   }
 
   /* The CV's own logo art, cropped from the document as monochrome PNGs.
-     --w is each logo's width at the CV's reference scale; the row scales
-     together through --logo-scale. */
+     Every mark sits in the same-height box; wide wordmarks are capped in
+     width so they settle a touch shorter than the tall marks. */
   .wordmark__logo {
-    width: calc(var(--w) * var(--logo-scale));
-    height: auto;
+    height: 100%;
+    width: auto;
+    max-width: clamp(7rem, 14vw, 11rem);
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .wordmark--note {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted, var(--color-mid));
   }
 
   .wordmark__main {
@@ -955,33 +967,50 @@
 
   /* Section 3: profile + creative experience ------------------------ */
 
+  /* Text in one grid (profile, then the two roles), photos in a second row
+     underneath so nothing bleeds or hangs below a shorter column. */
   .experience {
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(2.5rem, 5vw, 4rem);
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 48rem) {
     .experience {
-      grid-template-columns: 5fr 7fr;
+      grid-template-columns: 1fr 1fr;
+    }
+    .experience__profile {
+      grid-column: 1 / -1;
     }
   }
 
-  .experience__cols {
+  @media (min-width: 64rem) {
+    .experience {
+      grid-template-columns: 1.35fr 1fr 1fr;
+      column-gap: clamp(2.5rem, 4vw, 4rem);
+    }
+    .experience__profile {
+      grid-column: auto;
+    }
+  }
+
+  .experience-photos {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
   }
 
   @media (min-width: 48rem) {
-    .experience__cols {
-      grid-template-columns: 1fr 1fr;
+    .experience-photos {
+      grid-template-columns: 2fr 3fr;
+      height: clamp(18rem, 34vw, 30rem);
     }
-    /* Once the columns go 2-up, the crew figure in the second column keeps
-       its right-hand bleed to the page edge but must not pull left into the
-       first column: the negative gutter is wider than the column gap. */
-    .experience__cols .bleed-x {
-      margin-left: 0;
+    .experience-photos .photo-frame {
+      height: 100%;
+      aspect-ratio: auto;
+      margin: 0;
+      max-width: none;
     }
   }
 
@@ -1015,20 +1044,19 @@
 
   .photo-frame--crew {
     aspect-ratio: 4 / 3;
-    margin-top: clamp(2rem, 4vw, 3rem);
   }
 
-  @media (min-width: 48rem) {
-    .photo-frame--crew {
-      aspect-ratio: 5 / 4;
-    }
+  .photo-frame--crew img {
+    object-position: 50% 40%;
   }
 
-  /* The studio portrait from page 1 of the CV, under the profile prose. */
+  /* The studio portrait from page 1 of the CV; keep his cap in frame. */
   .photo-frame--portrait {
     aspect-ratio: 3 / 4;
-    max-width: 34rem;
-    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .photo-frame--portrait img {
+    object-position: 50% 18%;
   }
 
   .photo-frame--live {
@@ -1221,9 +1249,7 @@
     animation: marquee 42s linear infinite;
   }
 
-  /* Pauses on hover, on keyboard focus inside, and from the Pause control. */
-  .release-marquee:hover .release-marquee__track,
-  .release-marquee:focus-within .release-marquee__track,
+  /* Runs continuously; only the Pause control stops it. */
   .release-marquee[data-paused="true"] .release-marquee__track {
     animation-play-state: paused;
   }

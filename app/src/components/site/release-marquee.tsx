@@ -9,9 +9,9 @@ const RELEASES = RELEASE_HEIGHTS.map((height, i) => ({
   height,
 }));
 
-/* The seven release covers from the CV in a slow marquee. Auto-moving
-   content gets a visible Pause control (hover and keyboard focus pause it
-   too); under reduced motion the CSS turns it into a static scrollable row
+/* The seven release covers from the CV in a continuous marquee that does not stop on hover. Auto-moving
+   content gets a visible Pause control (the only thing that stops it;
+   under reduced motion the CSS turns it into a static scrollable row
    and hides the duplicate track. Covers carry no titles: the CV gives none. */
 export function ReleaseMarquee() {
   const [paused, setPaused] = useState(false);

@@ -376,69 +376,68 @@ function Index() {
             </div>
 
             <div className="experience">
-              <div>
+              <div className="experience__profile">
                 <h3 className="sub-title">Profile</h3>
                 <div className="prose">
                   {PROFILE.map((para) => (
                     <p key={para.slice(0, 24)}>{para}</p>
                   ))}
                 </div>
-                <figure className="photo-frame photo-frame--portrait">
-                  <img
-                    src="/assets/photos/kuka-studio-portrait-web.jpg"
-                    alt="Kuka standing in a studio beside a microphone"
-                    width={1600}
-                    height={2132}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </figure>
               </div>
 
-              <div className="experience__cols">
-                <article className="role">
-                  <h3 className="sub-title">{NINE_TO_FIVE.title}</h3>
-                  <p className="role__meta">{NINE_TO_FIVE.meta}</p>
-                  <p className="role__meta">{NINE_TO_FIVE.dates}</p>
-                  <p className="role__summary">{NINE_TO_FIVE.summary}</p>
-                  <p className="label">Responsibilities include:</p>
-                  <ul className="dot-list">
-                    {NINE_TO_FIVE.responsibilities.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                  <p className="label">Key contributions:</p>
-                  <ul className="dot-list">
-                    {NINE_TO_FIVE.contributions.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
+              <article className="role">
+                <h3 className="sub-title">{NINE_TO_FIVE.title}</h3>
+                <p className="role__meta">{NINE_TO_FIVE.meta}</p>
+                <p className="role__meta">{NINE_TO_FIVE.dates}</p>
+                <p className="role__summary">{NINE_TO_FIVE.summary}</p>
+                <p className="label">Responsibilities include:</p>
+                <ul className="dot-list">
+                  {NINE_TO_FIVE.responsibilities.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <p className="label">Key contributions:</p>
+                <ul className="dot-list">
+                  {NINE_TO_FIVE.contributions.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
 
-                <div>
-                  <article className="role">
-                    <h3 className="sub-title">{DEATH_STAR.title}</h3>
-                    <p className="role__meta">{DEATH_STAR.meta}</p>
-                    <p className="role__summary">{DEATH_STAR.summary}</p>
-                    <p className="label">Responsibilities include:</p>
-                    <ul className="dot-list">
-                      {DEATH_STAR.responsibilities.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </article>
-                  <figure className="photo-frame photo-frame--crew bleed-x bleed-right">
-                    <img
-                      src="/assets/photos/crew-on-set-web.jpg"
-                      alt="Three crew on set reviewing a shot on a cinema camera"
-                      width={1800}
-                      height={2709}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </figure>
-                </div>
-              </div>
+              <article className="role">
+                <h3 className="sub-title">{DEATH_STAR.title}</h3>
+                <p className="role__meta">{DEATH_STAR.meta}</p>
+                <p className="role__summary">{DEATH_STAR.summary}</p>
+                <p className="label">Responsibilities include:</p>
+                <ul className="dot-list">
+                  {DEATH_STAR.responsibilities.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+
+            <div className="experience-photos">
+              <figure className="photo-frame photo-frame--portrait">
+                <img
+                  src="/assets/photos/kuka-studio-portrait-web.jpg"
+                  alt="Kuka standing in a studio beside a microphone"
+                  width={1600}
+                  height={2132}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <figure className="photo-frame photo-frame--crew">
+                <img
+                  src="/assets/photos/crew-on-set-web.jpg"
+                  alt="Three crew on set reviewing a shot on a cinema camera"
+                  width={1800}
+                  height={2709}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
             </div>
           </div>
         </section>
@@ -577,10 +576,7 @@ function Index() {
                   <LogoImage logo={logo} />
                 </li>
               ))}
-              <li className="wordmark">
-                <span className="wordmark__main">Various</span>
-                <span className="wordmark__sub">Fashion & lifestyle campaigns</span>
-              </li>
+              <li className="wordmark wordmark--note">Plus various fashion and lifestyle campaigns</li>
             </ul>
 
             <div className="section-head mt-16 md:mt-24">
