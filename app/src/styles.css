@@ -1509,4 +1509,4 @@
 }
 
 /* The engine ships a one-button chapter nav ("Intro"); the site nav covers navigation, so it is hidden. */
-.scroll-scrub__route { display: none; }
+.scroll-scrub nav.scroll-scrub__route { display: none !important; }
