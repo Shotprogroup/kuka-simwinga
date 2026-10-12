@@ -7,7 +7,7 @@ Vercel hosts a static export of it:
     cd ../export
     sed 's#"cloudflare:workers"#"./cf-stub.mjs"#g' ../app/dist/server/server.js > server.node.mjs
     node render.mjs                       # renders / through the server bundle -> out/index.html
-    rsync -a --delete --exclude presets ../app/dist/client/ out/
+    rsync -a --delete --exclude presets --exclude .vercel ../app/dist/client/ out/   # keep out/.vercel (the project link) or vercel creates a stray "out" project
     cp vercel.json out/vercel.json
     cd out && vercel deploy --prod -y     # project: kuka-simwinga (Joel's Vercel)
 
