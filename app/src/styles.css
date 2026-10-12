@@ -925,27 +925,28 @@
   .wordmark {
     display: flex;
     align-items: center;
-    height: var(--logo-h, 3rem);
+    height: var(--logo-h, 2.5rem);
     line-height: 1;
   }
 
   /* The CV's own logo art, cropped from the document as monochrome PNGs.
-     Every mark sits in the same-height box; wide wordmarks are capped in
-     width so they settle a touch shorter than the tall marks. */
+     Every mark sits in the same box (one height, one max width) so a wide
+     wordmark and a tall mark read as the same optical size. */
   .wordmark__logo {
     height: 100%;
     width: auto;
-    max-width: clamp(7rem, 14vw, 11rem);
+    max-width: 7rem;
     object-fit: contain;
     object-position: left center;
   }
 
-  .wordmark--note {
+  .wordmark-note {
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--muted, var(--color-mid));
+    color: var(--color-mid);
   }
 
   .wordmark__main {
@@ -994,24 +995,16 @@
     }
   }
 
+  /* One photo, a restrained band, plenty of air either side of it. */
   .experience-photos {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(1rem, 2vw, 1.5rem);
-    margin-top: clamp(2.5rem, 5vw, 4rem);
+    margin-top: clamp(3rem, 6vw, 5rem);
   }
 
-  @media (min-width: 48rem) {
-    .experience-photos {
-      grid-template-columns: 2fr 3fr;
-      height: clamp(18rem, 34vw, 30rem);
-    }
-    .experience-photos .photo-frame {
-      height: 100%;
-      aspect-ratio: auto;
-      margin: 0;
-      max-width: none;
-    }
+  .experience-photos .photo-frame {
+    aspect-ratio: auto;
+    height: clamp(14rem, 26vw, 24rem);
+    margin: 0;
+    max-width: none;
   }
 
   .role__meta {
@@ -1160,34 +1153,20 @@
     }
   }
 
+  /* Three lists under one hairline; no box, no column rules. */
   .ruled-table {
     display: grid;
     grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
     margin: 0;
-    padding: 0;
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0 0;
     list-style: none;
-    border: 1px solid var(--color-rule);
-  }
-
-  .ruled-table__col {
-    padding: clamp(1.25rem, 2.5vw, 2rem);
     border-top: 1px solid var(--color-rule);
-  }
-
-  .ruled-table__col:first-child {
-    border-top: 0;
   }
 
   @media (min-width: 48rem) {
     .ruled-table {
       grid-template-columns: repeat(3, 1fr);
-    }
-    .ruled-table__col {
-      border-top: 0;
-      border-left: 1px solid var(--color-rule);
-    }
-    .ruled-table__col:first-child {
-      border-left: 0;
     }
   }
 
@@ -1202,35 +1181,6 @@
     line-height: 1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-  }
-
-  .marquee-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .marquee-toggle {
-    margin: 0;
-    padding: 0.25rem 0;
-    border: 0;
-    background: none;
-    color: inherit;
-    font: inherit;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: 0.3em;
-    text-decoration-thickness: 1px;
-    cursor: pointer;
-  }
-
-  .marquee-toggle:hover {
-    text-decoration-color: var(--color-accent);
   }
 
   .release-marquee {
@@ -1249,10 +1199,6 @@
     animation: marquee 42s linear infinite;
   }
 
-  /* Runs continuously; only the Pause control stops it. */
-  .release-marquee[data-paused="true"] .release-marquee__track {
-    animation-play-state: paused;
-  }
 
   .release-cover {
     flex: 0 0 auto;

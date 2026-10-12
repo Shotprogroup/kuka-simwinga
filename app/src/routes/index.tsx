@@ -418,16 +418,6 @@ function Index() {
             </div>
 
             <div className="experience-photos">
-              <figure className="photo-frame photo-frame--portrait">
-                <img
-                  src="/assets/photos/kuka-studio-portrait-web.jpg"
-                  alt="Kuka standing in a studio beside a microphone"
-                  width={1600}
-                  height={2132}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </figure>
               <figure className="photo-frame photo-frame--crew">
                 <img
                   src="/assets/photos/crew-on-set-web.jpg"
@@ -443,7 +433,7 @@ function Index() {
         </section>
 
         {/* 4. Selected projects */}
-        <section className="band band--paper pt-0" data-band="paper" aria-labelledby="projects-title">
+        <section className="band band--paper" data-band="paper" aria-labelledby="projects-title">
           <div className="site-wrap">
             <div className="section-head">
               <h2 id="projects-title" className="section-title text-4xl md:text-6xl leading-[0.92]">
@@ -576,8 +566,8 @@ function Index() {
                   <LogoImage logo={logo} />
                 </li>
               ))}
-              <li className="wordmark wordmark--note">Plus various fashion and lifestyle campaigns</li>
             </ul>
+            <p className="wordmark-note">Plus various fashion and lifestyle campaigns</p>
 
             <div className="section-head mt-16 md:mt-24">
               <h2 className="section-title text-4xl md:text-6xl leading-[0.92]">The foundation</h2>
